@@ -44,7 +44,9 @@
 <div class="card">
   <h2 style="margin-top:0">1. 上传整分钟累计读数 CSV</h2>
   <p class="muted">表头 <code>timestamp,reading</code>，整数 Wh，整分钟；账期内可补传，同刻覆盖。
-     合并后若回卷或超每分钟上限无解，整批拒绝，库内数据与结论不变。</p>
+     合并后若回卷或超每分钟上限无解，整批拒绝，库内数据与结论不变。
+     补传成功后按现行参数自动重算，读数与当前结论同一事务生效，初核保留；
+     核对不通过也会保存新的当前结论。</p>
   <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
     <input type="file" name="csv" accept=".csv,text/csv" required>
     <button type="submit">上传 / 补传</button>
